@@ -1,0 +1,389 @@
+@import "variables.scss";
+$bluefont: #70d2ff;
+.my-path-detail {
+    @include mobile {
+        margin: 0 -1.25rem;
+    }
+}
+
+.path-viewer {
+    background: #075f8d;
+    padding: 0;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    max-height: calc(100vh - 108px);
+    overflow: hidden;
+    overflow-y: auto;
+    @media only screen and (max-height: 600px) {
+        max-height: none;
+    }
+    @include mobile {
+        margin-bottom: 1.5rem;
+        max-height: none;
+        border-radius: 0;
+    }
+    .path-content-viewer {
+        overflow: hidden;
+        padding: 1.5rem 3rem;
+        position: relative;
+        @include mobile {
+            padding: 1.5rem 0.75rem;
+            border-radius: 0;
+        }
+    }
+    .path-background-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.6;
+    }
+}
+
+.steps-container {
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.viewer-step {
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    a.step-anchor {
+        position: absolute;
+        top: 0;
+    }
+    @include mobile {
+        padding: 0.75rem;
+        a.step-anchor {
+            position: absolute;
+            top: -120px;
+        }
+    }
+    .viewer-overlay {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        max-height: 50%;
+        height: 180px;
+        content: "";
+        display: block;
+        opacity: 0.33;
+        border-radius: 0 0 12px 12px;
+        overflow: hidden;
+    }
+    .viewer-content {
+        position: relative;
+        z-index: 5;
+    }
+    h3 {
+        color: inherit;
+        font-size: 1.25rem;
+        font-weight: 300;
+        margin: 0 0 0.5rem;
+        strong {
+            font-size: 1.5rem;
+            color: $bluefont;
+        }
+    }
+    p {
+        color: inherit;
+        line-height: 1.2;
+    }
+    .viewer-image {
+        position: relative;
+        .viewer-image-item {
+            padding-top: 1rem;
+            text-align: center;
+            position: relative;
+            img {
+                border-radius: 0.5rem;
+                +.btn-viewer {
+                    transform: translateY(-50%);
+                    margin-bottom: 0;
+                    &.active {
+                        animation: strong 1s 2 ease-in-out;
+                    }
+                }
+            }
+            .btn-viewer {
+                position: relative;
+                margin: 0 auto 1.25rem;
+                display: flex;
+                align-items: center;
+                font-size: 0.875rem;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 0.5rem 1rem;
+                line-height: 1.4;
+                color: $blue;
+                position: relative;
+                z-index: 5;
+                max-width: 160px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: $transition-start;
+                &:hover,
+                &:focus {
+                    background: rgba(255, 255, 255, 1);
+                    transition: $transition-end;
+                    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.66);
+                }
+                &.btn-viewer-enroll {
+                    color: rgba(0, 0, 0, .66);
+                    background: #eee;
+                }
+                &.active {
+                    animation: single-strong 1s 2 ease-in-out;
+                }
+                .fa,
+                .vuo-material-icon {
+                    margin-right: 0.5rem;
+                    filter: invert(1);
+                }
+                .viewer-border {
+                    position: absolute;
+                    left: -4px;
+                    top: -4px;
+                    right: -4px;
+                    bottom: -4px;
+                    display: block;
+                    content: "";
+                    z-index: -1;
+                    opacity: 0.3;
+                    border-radius: 12px;
+                }
+                @include desktop {
+                    max-width: 60%;
+                }
+            }
+        }
+    }
+    .viewer-action {
+        .viewer-complete-step {
+            padding: 0 0.75rem;
+            line-height: 32px;
+            background: #0b6391;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            transition: all ease 0.1s;
+            display: flex;
+            align-items: center;
+            &:hover,
+            &:focus {
+                box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+            }
+            @include mobile {
+                margin-right: 0.75rem;
+            }
+            .fa {
+                margin-right: 0.5rem;
+            }
+            .text {
+                font-size: 0.875rem;
+                flex: 1;
+                display: block;
+            }
+        }
+        .viewer-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: inherit;
+            background: #0b6391;
+            padding: 0 0.75rem;
+            flex: 1;
+            border-radius: 12px;
+            line-height: 32px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all ease 0.1s;
+            white-space: nowrap;
+            @include tablet {
+                font-size: 0.875rem;
+            }
+            @include desktop {
+                font-size: 0.875rem;
+            }
+            .viewer-comments {
+                .viewer-comment-count {
+                    margin-right: 0.5rem;
+                    display: inline-block;
+                    @include mobile {
+                        margin-right: 0.25rem;
+                    }
+                }
+                .fa {
+                    color: #fff;
+                }
+            }
+            .viewer-label {
+                display: block;
+                padding-right: 1.75rem;
+                background: url(../images/lifelearn_logo.png) no-repeat center right;
+                background-size: 20px 20px;
+                color: inherit;
+            }
+            &:hover,
+            &:focus {
+                box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+            }
+        }
+        .viewer-avatar {
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            .image {
+                margin-left: 0.5rem;
+                width: 32px;
+                height: 32px;
+                text-align: center;
+                background: #e1904d;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            flex-shrink: 0;
+            font-size: 0.875rem;
+            line-height: 32px;
+            color: #fff;
+            @include mobile {
+                margin-left: 0.75rem;
+            }
+            img {
+                display: block;
+            }
+        }
+    }
+    &.active {
+        &:after {
+            display: block;
+            content: "";
+            position: absolute;
+            right: -2rem;
+            border-width: 1rem;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+            top: 60%;
+        }
+    }
+}
+
+.document-viewer {
+    min-height: 100vh;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 1rem;
+    h1 {
+        font-size: 1.25rem;
+    }
+    h2 {
+        font-size: 1.125rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 0.875rem;
+    }
+    img {
+        margin-bottom: 1rem;
+    }
+}
+
+.vuo-document-viewer {
+    margin-bottom: 1.5rem;
+    .vuo-viewer-container {
+        background: #fff;
+        overflow: hidden;
+        border-radius: 12px;
+        padding: 0 1rem;
+        @include mobile {
+            margin: 0 -1.25rem;
+            border-radius: 0;
+        }
+    }
+}
+
+.vuo-back-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include mobile {
+        margin: 0 -0.5rem;
+    }
+    .vuo-navigation {
+        display: flex;
+        align-items: center;
+        .button {
+            margin-left: 1rem;
+        }
+    }
+    .btn-back {
+        border: 2px solid $grey;
+        color: $grey;
+        background: $white;
+        display: flex;
+        align-items: center;
+        // width: 80px;
+        white-space: nowrap;
+        justify-content: center;
+        padding: 0 0.5rem;
+        text-align: center;
+        line-height: 40px;
+        .fa {
+            font-size: 1.25rem;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        &:hover,
+        &:focus {
+            background: $softgrey;
+            border-color: $default;
+            color: $default;
+        }
+        &.btn-next,
+        &.btn-prev {
+            width: 100px;
+        }
+        &.btn-next {
+            .fa {
+                margin-right: 0;
+                margin-left: 0.5rem;
+            }
+        }
+        @include mobile {
+            line-height: 32px;
+            font-size: 0.75rem;
+            .fa {
+                font-size: 1rem;
+                margin-right: 0.25rem;
+            }
+            &.btn-next,
+            &.btn-prev {
+                width: auto;
+            }
+            &.btn-next {
+                .fa {
+                    margin-left: 0.25rem;
+                }
+            }
+        }
+    }
+}
+
+.vuo-material-icon {
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon_material_document.png) no-repeat center;
+    background-size: cover;
+    opacity: 0.5;
+    &.vuo-download {
+        background-image: url(../images/icon_material_download.png);
+    }
+}

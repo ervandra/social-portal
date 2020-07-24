@@ -1,0 +1,67 @@
+---
+image: docker.haltu.net/c-lifelearn/salt-portal:latest
+
+before_script:
+  - export CI=false
+
+build:
+  stage: build
+  script:
+    - npm install --progress=false
+    - npm run build
+
+security_audit:
+  image: node:11.4.0-alpine
+  stage: test
+  allow_failure: true
+  script:
+    - npm audit
+
+deploy_to_built_repo_staging:
+  stage: deploy
+  only:
+    - develop
+  script:
+    - echo "$ENV" >.env
+    - echo "REACT_APP_SENTRY_ENVIRONMENT=staging" >>.env
+    - npm install --progress=false
+    - npm run build
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - git clone -b staging git@code.haltu.net:c-lifelearn/lifelearn-portal-built.git client-built
+    - rsync -av --delete -h --exclude .git build/ client-built/webroot/
+    - cd client-built
+    - git config user.email "no-reply@code.haltu.net"
+    - git config user.name "Haltu GitLab"
+    - git status
+    - git add --all
+    - git diff-index --quiet HEAD || git commit -m "Built files for revision $CI_COMMIT_SHA"
+    - git status
+    - git push origin staging
+
+deploy_to_built_repo_production:
+  stage: deploy
+  when: manual
+  only:
+    - master
+  script:
+    - echo "$ENV" >.env
+    - echo "REACT_APP_SENTRY_ENVIRONMENT=production" >>.env
+    - npm install --progress=false
+    - npm run build
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - git clone -b master git@code.haltu.net:c-lifelearn/lifelearn-portal-built.git client-built
+    - rsync -av --delete -h --exclude .git build/ client-built/webroot/
+    - cd client-built
+    - git config user.email "no-reply@code.haltu.net"
+    - git config user.name "Haltu GitLab"
+    - git status
+    - git add --all
+    - git diff-index --quiet HEAD || git commit -m "Built files for revision $CI_COMMIT_SHA"
+    - git status
+    - git push origin master

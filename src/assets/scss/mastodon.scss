@@ -1,0 +1,368 @@
+@import "variables.scss";
+
+.reveal.chat-modal {
+  padding: 1rem;
+}
+
+.mst-chat {
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 4px;
+  + .mst-chat {
+    margin-top: 0.5rem;
+  }
+  .mst-header {
+    display: flex;
+    margin-bottom: 0;
+    padding-right: 0.5rem;
+    flex-wrap: wrap;
+    .mst-avatar {
+      margin-right: 0.75rem;
+      width: 32px;
+      flex-basis: 32px;
+      flex-shrink: 0;
+      align-self: flex-start;
+      display: none;
+      img {
+        border-radius: 4px;
+        overflow: hidden;
+      }
+    }
+    .mst-user {
+      flex: 1;
+      white-space: nowrap;
+      h5 {
+        font-size: 0.875rem;
+        font-weight: bold;
+        margin: 0 0 0.25rem;
+        color: #707070;
+      }
+      h6 {
+        font-size: 0.75rem;
+        margin: 0;
+        color: #999;
+        margin-bottom: 0.25rem;
+        display: none;
+      }
+    }
+    .mst-meta {
+      white-space: nowrap;
+      font-size: 0.625rem;
+      text-align: right;
+      margin: 0 0 0.25rem;
+    }
+  }
+  .mst-content {
+    p {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      word-wrap: break-word;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .mst-footer {
+    display: flex;
+    align-items: center;
+    .mst-tools {
+      .button {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        color: #aaa;
+        border: 1px solid #f3f3f3;
+        &:hover,
+        &:focus {
+          border: 1px solid #ccc;
+        }
+        .fa {
+          margin-right: 0.375rem;
+        }
+      }
+      .count {
+        font-size: 0.625rem;
+        font-weight: bold;
+        margin-right: 0.25rem;
+        color: $blue;
+      }
+    }
+  }
+}
+
+.mst-timeline {
+  position: relative;
+  margin-bottom: 1rem;
+  @include desktop {
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: calc(100vh - 148px);
+  }
+}
+
+.mst-chat-room {
+  .mst-room-header {
+    padding-top: 1rem;
+    h3 {
+      font-size: 1rem;
+    }
+  }
+  .mst-room-user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    .mst-user-avatar {
+      margin-right: 0.75rem;
+      align-self: flex-start;
+      display: none;
+    }
+    h5 {
+      font-size: 0.875rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    h6 {
+      margin: 0;
+      font-size: 0.75rem;
+      color: #999;
+      display: none;
+    }
+  }
+  .mst-room-body {
+    textarea {
+      border: 1px solid #e2e2e2;
+      box-shadow: none;
+      height: 90px;
+      font-size: 1rem;
+      &:focus {
+        box-shadow: none;
+        border-color: $blue;
+      }
+    }
+    p {
+      font-size: 0.75rem;
+      font-style: italic;
+      margin-top: -0.5rem;
+      color: $copy;
+    }
+    .mst-chat-tooltip {
+      margin-top: -0.5rem;
+      display: flex;
+      justify-content: space-between;
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+  .mst-room-footer {
+    display: flex;
+    justify-content: flex-end;
+    .button {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.mst-fixed-chat {
+  .mst-room-user-profile {
+    margin: 0;
+    justify-content: space-between;
+    .mst-user-info {
+      flex-grow: 1;
+    }
+    .button {
+      margin: 0;
+    }
+  }
+  @include mobile {
+    // position: fixed;
+    // z-index: 6;
+    // padding: 1rem;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    // background: #fff;
+    // box-shadow: 0 0 8px 1px $shadow;
+  }
+}
+
+.mastodon-step-chat {
+  position: relative;
+  .mst-load-more {
+    .button {
+      margin: 0;
+    }
+  }
+  .mst-chat-header {
+    h4 {
+      color: $orange;
+      margin: 0.25rem 0 0.5rem;
+      font-size: 1rem;
+    }
+    .mst-chat-header-with-tools {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h5 {
+      text-align: left;
+      margin: 0.75rem 0 0.5rem;
+      font-size: 0.875rem;
+      color: #222;
+    }
+  }
+  .mst-timeline.empty {
+    h6 {
+      font-style: italic;
+    }
+  }
+  .mst-timeline {
+    max-height: 480px;
+    overflow: hidden;
+    overflow-y: auto;
+    margin: 0;
+    @include mobile {
+      padding-bottom: 120px;
+    }
+
+    .mst-chat {
+      // display: flex;
+      // justify-content: flex-start;
+      // align-items: flex-start;
+      border-radius: 0;
+      padding: 0.75rem 0;
+      + .mst-chat {
+        border-top: 1px solid $shadow;
+        margin-top: 0;
+      }
+      .mst-header .mst-avatar {
+        margin-right: 0.25rem;
+        flex-basis: 32px;
+        width: 32px;
+        align-self: flex-start;
+      }
+      .mst-user {
+        .mst-meta {
+          white-space: nowrap;
+          font-size: 0.625rem;
+          text-align: right;
+          margin: 0 0 0.25rem;
+        }
+      }
+      .mst-content {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+.chat-loading {
+  .fa {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  p {
+    flex: 1;
+    font-size: 14px;
+    color: #999;
+    line-height: 32px;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.mastodon-container {
+  position: relative;
+}
+
+.mst-load-more {
+  text-align: center;
+  .button {
+    .fa {
+      margin: 0;
+    }
+  }
+}
+
+.mst-timeline-container {
+  position: relative;
+}
+.mst-has-new-chat {
+  position: absolute;
+  top: 3rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 5;
+  p {
+    background: #f8a832cc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    line-height: 1.5;
+    padding: 0.75rem 0.75rem;
+    margin: 0 0 0.5rem;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+    font-style: italic;
+    animation: blink 1s ease 3;
+  }
+}
+
+.mst-text-counter {
+  line-height: 36px;
+  font-size: 0.875rem;
+  margin-left: 1rem;
+  color: #aaa;
+}
+
+.sticky-chat-item {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  position: relative;
+  &:before {
+    content: "\f08d";
+    content: "\f10e";
+    font-family: "FontAwesome";
+    display: block;
+    position: absolute;
+    right: -0.25rem;
+    top: -0.75rem;
+    font-size: 1.25rem;
+    color: #999;
+    transform-origin: 50% 50%;
+    transform: rotate(30deg);
+  }
+  .mst-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    h5 {
+      font-size: 0.875rem;
+      margin: 0;
+      font-weight: bold;
+    }
+    .mst-meta {
+      font-size: 0.75rem;
+      margin-left: 1rem;
+    }
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.ticker-modal-container {
+  .mst-chat-header-with-tools {
+    display: flex;
+    justify-content: space-between;
+    h4 {
+      font-size: 1rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    .button {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,224 @@
+@import "variables.scss";
+
+.trend-container {
+    h3,
+    h4 {
+        font-size: 1.25rem;
+    }
+    display: flex;
+    justify-content: center;
+}
+
+.trend-search {
+    transition: all ease 0.6s;
+    text-align: center;
+    width: 100%;
+    &.is-active {
+        width: 60%;
+    }
+}
+
+.form-trend {
+    max-width: 300px;
+    margin: 0 auto 1rem;
+    form {
+        display: flex;
+        align-items: center;
+        .button {
+            margin-left: 1rem;
+            .fa {
+                margin: 0;
+            }
+            &:disabled {
+                background: #666666;
+            }
+        }
+    }
+}
+.trend-discussion {
+    width: 40%;
+    // overflow: hidden;
+    // transition: all ease 0.6s;
+    // &.is-active {
+    //     transition-delay: 0.3s;
+    //     width: 40%;
+    // }
+}
+
+.active-trend-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p,
+    button {
+        margin: 0;
+    }
+    .trend-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #e0e6ed;
+        color: #1f2d3d;
+        border-radius: 16px;
+        height: 32px;
+        line-height: 32px;
+        padding-left: 1rem;
+        padding-right: 2px;
+        button {
+            margin-left: 1rem;
+            background: none;
+            cursor: pointer;
+            border-radius: 20rem;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            &:hover,
+            &:active {
+                background: none;
+                color: red;
+                box-shadow: none;
+                background: #d0d6ed;
+            }
+        }
+    }
+}
+
+.trend-discussion-window {
+    // border: 1px solid #ccc;
+    // border-radius: 12px;
+    // overflow: hidden;
+}
+
+.trend-box {
+    position: relative;
+    border-radius: 12px;
+    padding: 0;
+    width: 600px;
+    height: 600px;
+    border: 1px solid #ccc;
+    margin: 2rem auto 2rem;
+
+    .prefered,
+    .likely {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        background: #999;
+        font-size: 0;
+        top: 50%;
+        transform-origin: 50% 50%;
+    }
+    .prefered {
+        transform: rotate(90deg);
+        span {
+            left: 10px;
+            position: absolute;
+            font-size: 10px;
+            // transform: rotate(-90deg);
+            margin-top: -35px;
+            margin-left: 0px;
+        }
+    }
+    .likely {
+        span {
+            font-size: 10px;
+            position: absolute;
+            right: 10px;
+            margin-top: 5px;
+        }
+    }
+}
+.trend-item {
+    width: 160px;
+    font-size: 12px;
+    background: #efefef;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 90px;
+    text-align: left;
+    div {
+        padding: 0 0.5rem;
+    }
+    .handle {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .trend-button {
+        border-top: 1px solid #ddd;
+        padding: 0.5rem;
+        .button {
+            margin: 0;
+        }
+    }
+}
+
+.all-trends-data {
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 1rem;
+        padding: 0;
+        li {
+            display: block;
+            margin-right: 1rem;
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #e0e6ed;
+                color: #1f2d3d;
+                border-radius: 16px;
+                height: 32px;
+                line-height: 32px;
+                padding: 0 1rem;
+                &.active {
+                    background: $brand;
+                    color: $white;
+                }
+                span.close {
+                    .fa {
+                        margin: 0;
+                    }
+                    margin-right: -0.875rem;
+                    margin-left: 1rem;
+                    background: none;
+                    cursor: pointer;
+                    border-radius: 20rem;
+                    width: 28px;
+                    height: 28px;
+                    line-height: 28px;
+                    text-align: center;
+                    &:hover,
+                    &:active {
+                        background: none;
+                        color: red;
+                        box-shadow: none;
+                        background: #d0d6ed;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.trend-discussion-wrap {
+    ul {
+        display: flex;
+        align-items: center;
+        margin: 0 0 1rem;
+        padding: 0;
+        li {
+            display: block;
+            + li {
+                margin-left: 1rem;
+            }
+            .button {
+                margin: 0;
+            }
+        }
+    }
+}

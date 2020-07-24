@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+lang_map = en_US:en
+
+[social-portal.defaultjson]
+file_filter = src/locales/<lang>/default.json
+source_file = src/locales/dev/default.json
+source_lang = dev
+type = KEYVALUEJSON

@@ -1,0 +1,78 @@
+{
+    "name": "lifelearn-portal",
+    "version": "2.0.0",
+    "description": "LifeLearn Web Portal using pure React.js",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git@code.haltu.net:c-lifelearn/lifelearn-portal.git"
+    },
+    "keywords": [
+        "lifelearn"
+    ],
+    "author": "Ervandra Halim",
+    "license": "ISC",
+    "dependencies": {
+        "@apollo/react-hooks": "^3.1.3",
+        "@sentry/browser": "^5.15.4",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.1.2",
+        "apollo-boost": "^0.4.4",
+        "axios": "^0.19.2",
+        "firebase": "7.6.1",
+        "graphql": "^14.6.0",
+        "i18next": "^19.3.4",
+        "i18next-browser-languagedetector": "^4.0.2",
+        "moment": "^2.24.0",
+        "node-sass": "^4.13.1",
+        "query-string": "^6.11.1",
+        "rc-slider": "^8.7.1",
+        "rc-tooltip": "^4.0.3",
+        "react": "^16.13.1",
+        "react-apollo": "^3.1.3",
+        "react-cookie": "^4.0.1",
+        "react-device-detect": "^1.11.14",
+        "react-dom": "^16.13.1",
+        "react-draggable": "^4.4.3",
+        "react-helmet": "^5.2.1",
+        "react-i18next": "^11.3.4",
+        "react-images-loaded": "^2.0.0",
+        "react-modal": "^3.11.2",
+        "react-moment": "^0.9.7",
+        "react-redux": "^7.2.0",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "^3.4.0",
+        "react-stripe-elements": "^6.1.0",
+        "react-twitter-embed": "^3.0.3",
+        "recompose": "^0.30.0",
+        "redux": "^4.0.4",
+        "redux-devtools-extension": "^2.13.8",
+        "redux-thunk": "^2.3.0",
+        "semantic-ui-css": "^2.4.1",
+        "semantic-ui-react": "^0.88.2",
+        "typescript": "^3.8.3"
+    },
+    "scripts": {
+        "createTranslation": "node scripts/createTranslation.js",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
